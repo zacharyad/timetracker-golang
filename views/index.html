@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoilerPlate HTML</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/style.css">
+    
+  </head>
+<body>
+  <header>
+    <nav>
+        <div class="logo"><a href="#">Logo</a></div>
+        <ul>
+            <li><a href="#">LINK 1</a></li>
+            <li><a href="#">LINK 2</a></li>
+            <li><a href="#">LINK 3</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <div>
+            <h1 >HERO Text</h1>
+            <h2 >SubHeroText</h2>
+            <p >Description text</p>
+            <a href="#">LINK callout BTN</a>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <section>
+        <h2>Section</h2>
+        <div >
+            <div class="about-text">
+                <p>Section text</p>
+                <ul class="skills-list">
+                    <li>1</li>
+                    <li>2</li>
+                </ul>
+            </div>
+            <div>
+                <img src="https://www.stackimages.xyz/l/javascript">
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section >
+        <h2>Form</h2>
+        <form action="/api/" method="POST">
+            <div class="input-group">
+                <input type="text" id="name" name="name" required>
+                <label for="name">Name</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <textarea id="message" name="message" required></textarea>
+                <label for="message">Message</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; footer text</p>
+</footer>
+    <script type="text/javascript" src="/static/script.js"></script>
+</body>
+</html>
