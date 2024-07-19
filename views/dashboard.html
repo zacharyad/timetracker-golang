@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/style.css">
+    
+  </head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Welcome, {{.User.Name}}.</div>
+                <a href="/login-out" class="book-appointment" aria-label="Book an appointment">Logout</a>
+            </nav>
+            </header>
+            
+    <main>
+        <section id="home" class="hero">
+            <h1>{{ .User.Name }}'s Dashboard</h1>
+
+            <div id="user-id" data-userId="{{ .User.Id }}">
+                {{ range $_, $value := .Data }}
+                    <form>
+                        {{ $value.Title }}
+                            <input id="checkbox{{$value.Id}}" type="checkbox" {{ if eq $value.LevelOfComplete 100 }} checked {{ end }}>
+                            <div class="slidecontainer">
+                                <input onchange="SendSliderDataChange(this)" type="range" min="0" max="100" step="20" value="{{ $value.LevelOfComplete}}" id="{{ $value.Id}}" class="slider">
+                            </div> 
+        
+                    </form>
+                {{ end }}
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>&copy; 2024 PawsomeVet Clinic. All rights reserved.</p>
+    </footer>
+
+    <script type="text/javascript" src="/static/script.js"></script>
+    <script>
+
+        
+
+        function SendSliderDataChange(e) {
+            const userId = document.getElementById("user-id").getAttribute("data-userId")
+            let sliderVal = e.value
+            const checkbox = document.getElementById("checkbox" + e.id)
+
+
+            try{
+                fetch("/update-datapoint", {
+                            method: "post",
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                userId,
+                                dataId: e.id,
+                                progress: sliderVal,
+                                isComplete: sliderVal == 100
+                            })
+                        })
+
+            } catch (err) {
+                
+            } finally {
+                if (sliderVal == 100) {
+                    checkbox.checked = true;
+                    checkbox.addEventListener("click", () => {
+                        console.log("here")
+                        if(sliderVal == 100){
+                            this.checked = false
+                            e.style.opacity = 1;
+                        } else {
+                            e.style.opacity = 0;
+                        }
+                    })
+
+                    e.style.opacity = 0;
+                } 
+            }
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,23 +1,347 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700');
 
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --text-color: #333;
-    --bg-color: #f4f4f4;
-    --card-bg: #fff;
-    --transition: all 0.3s ease;
+    --primary-color: #007AFF;
+    --secondary-color: #5AC8FA;
+    --text-color: #313131;
+    --background-color: #FFFFFF;
+    --card-background: #F2F2F7;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--primary-color);
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.signin-btn-containter {
+    width: 40dvw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.book-appointment {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+}
+
+.book-appointment:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.hero {
+    background-image: linear-gradient(rgb(204, 223, 255), rgb(123, 171, 255)), url('/api/placeholder/1200/600');
+    background-size: cover;
+    background-position: center;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    max-width: 600px;
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+section {
+    padding: 6rem 2rem;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: var(--card-background);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image {
+    max-width: 50%;
+    border-radius: 20px;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #E5E5EA;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.submit-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(204, 223, 255);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--background-color);
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(154, 173, 206, 0.2);
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--text-color);
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-image {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #F2F2F7;
+        --background-color: #cddbff;
+        --card-background: #adc0ff;
+    }
+
+    header {
+        background-color: rgb(204, 223, 255);
+    }
+
+    .service-card:hover {
+        box-shadow: 0 10px 20px rgb(132, 149, 255);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
 }
